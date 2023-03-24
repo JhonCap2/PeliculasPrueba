@@ -15,27 +15,22 @@ namespace Peliculas.Infraestructure.Data.Property
         public void Configure(EntityTypeBuilder<Users> builder)
         {
             builder.ToTable("Users");
-            builder.HasKey(e => e.UserId)
-                .HasName("Id");
+            builder.HasKey(e => e.UserId);
 
             builder.Property(e => e.UserId)
                 .HasColumnName("Id")
                 .IsRequired();
 
             builder.Property(e => e.UserName)
-                .HasColumnName("Name")
                 .IsRequired();
 
             builder.Property(e=>e.UserEmail)
-                .HasColumnName("Email")
                 .IsRequired();
 
             builder.Property(e => e.User)
-                .HasColumnName("User")
                 .IsRequired();
 
             builder.Property(e=>e.Password)
-                .HasColumnName("Password")
                 .IsRequired();
         }
     }

@@ -15,14 +15,13 @@ namespace Peliculas.Infraestructure.Data.Property
         public void Configure(EntityTypeBuilder<Classifications> builder)
         {
             builder.ToTable("Classifications");
-            builder.HasKey(e => e.IdClassification)
-                .HasName("Id");
+            builder.HasKey(e => e.IdClassification);
 
             builder.Property(e => e.IdClassification)
-                .HasColumnName("IdClassification");
+                .HasColumnName("Id");
                 
             builder.Property(e=>e.Name)
-                .HasColumnName("Name")
+                .IsRequired()
                 .HasMaxLength(60);
         }
     }

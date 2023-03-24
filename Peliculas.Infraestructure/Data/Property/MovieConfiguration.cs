@@ -14,27 +14,23 @@ namespace Peliculas.Infraestructure.Data.Property
         public void Configure(EntityTypeBuilder<Movies> builder)
         {
             builder.ToTable("Movies");
-            builder.HasKey(e => e.IdMovie)
-                .HasName("Id");
+            builder.HasKey(e => e.IdMovie);
 
             builder.Property(e => e.IdMovie)
-                .HasColumnName("IdMovie");
+                .HasColumnName("Id");
 
             builder.Property(e => e.IdClassification)
-                .HasColumnName("IdClassification");
+                .IsRequired(); 
 
             builder.Property(e=>e.Title)
-                .HasColumnName("Title")
                 .IsRequired()
                 .HasMaxLength(100);
 
             builder.Property(e => e.Description)
-                .HasColumnName("description")
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.Property(e => e.FrontPage)
-                .HasColumnName("FrontPage")
+            builder.Property(e => e.Cover)
                 .IsRequired();
 
             builder.HasOne(d => d.IdClassificationNavigation)

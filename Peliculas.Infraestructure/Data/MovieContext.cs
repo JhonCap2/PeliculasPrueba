@@ -31,7 +31,7 @@ namespace Peliculas.Infraestructure.Data
             modelBuilder.ApplyConfiguration(new ClassificationConfiguration());
             modelBuilder.ApplyConfiguration(new MovieConfiguration());
 
-            base.OnModelCreating(modelBuilder);
+            OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

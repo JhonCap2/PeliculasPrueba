@@ -14,7 +14,7 @@ namespace Peliculas.Core.Entities
         public int IdClassification { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string FrontPage { get; set; }
+        public string Cover { get; set; }
 
         [JsonIgnore]
         public virtual Classifications IdClassificationNavigation { get; set; }
