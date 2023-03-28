@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Peliculas.Api.Response;
 using Peliculas.Core.DTOs;
 using Peliculas.Core.Entities;
 using Peliculas.Core.Interface;
@@ -24,8 +23,7 @@ namespace Peliculas.Api.Controllers
         {
             var classifications = await _classificationResponsy.GetClassifications();
             var classificationDto = _mapper.Map<IEnumerable<ClassificationsDto>>(classifications);
-            var response = new ApiResponse<IEnumerable<ClassificationsDto>>(classificationDto);
-            return Ok(response);
+            return Ok(classificationDto);
         }
 
         [HttpGet("{id}")]
@@ -33,24 +31,21 @@ namespace Peliculas.Api.Controllers
         {
             var classification = await _classificationResponsy.GetClassifications(id);
             var classificationDto = _mapper.Map<ClassificationsDto>(classification);
-            var response = new ApiResponse<ClassificationsDto>(classificationDto);
-            return Ok(response);
+            return Ok(classificationDto);
         }
         [HttpPost]
         public async Task<IActionResult> InsertClassification(Classifications newclassification)
         {
             await _classificationResponsy.InsertClassification(newclassification);
             var classificationDto = _mapper.Map<ClassificationsDto>(newclassification);
-            var reponse = new ApiResponse<ClassificationsDto>(classificationDto);
-            return Ok(reponse);
+            return Ok(classificationDto);
         }
         [HttpPut]
         public async Task<ActionResult> UpdateClassification(ClassificationsDto upclassification)
         {
             var classification = _mapper.Map<Classifications>(upclassification);
             await _classificationResponsy.UpdateClassification(classification);
-            var reponse = new ApiResponse<Classifications>(classification);
-            return Ok(reponse);
+            return Ok(classification);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteClassification(int id)

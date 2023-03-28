@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Peliculas.Api.Response;
 using Peliculas.Core.DTOs;
 using Peliculas.Core.Entities;
 using Peliculas.Core.Interface;
@@ -28,8 +27,7 @@ namespace Peliculas.Api.Controllers
         {
             var users = await _usersRepository.GetUsers();
             var usersDto = _mapper.Map<IEnumerable<UsersDto>>(users);
-            var response = new ApiResponse<IEnumerable<UsersDto>>(usersDto);
-            return Ok(response);
+            return Ok(usersDto);
         }
 
         [HttpGet("{id}")]
@@ -37,24 +35,21 @@ namespace Peliculas.Api.Controllers
         {
             var user = await _usersRepository.GetUsers(id);
             var usersDto = _mapper.Map<UsersDto>(user);
-            var response = new ApiResponse<UsersDto>(usersDto);
-            return Ok(response);
+            return Ok(usersDto);
         }
         [HttpPost]
         public async Task<IActionResult> InsertUser(Users newuser)
         { 
             await _usersRepository.InsertUsers(newuser);
             var usersDto = _mapper.Map<UsersDto>(newuser);
-            var reponse = new ApiResponse<UsersDto>(usersDto);
-            return Ok(reponse);
+            return Ok(usersDto);
         }
         [HttpPut]
         public async Task<ActionResult> UpdateUser(UsersDto upuser)
         { 
             var user = _mapper.Map<Users>(upuser);
             await _usersRepository.UpdateUsers(user);
-            var reponse = new ApiResponse<Users>(user);
-            return Ok(reponse);
+            return Ok(user);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(int id)
