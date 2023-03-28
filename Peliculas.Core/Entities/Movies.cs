@@ -17,7 +17,7 @@ namespace Peliculas.Core.Entities
         public string Cover { get; set; }
 
         [JsonIgnore]
-        public virtual Classifications IdClassificationNavigation { get; set; }
+        public virtual Classifications? IdClassificationNavigation { get; set; }
 
         
     }
