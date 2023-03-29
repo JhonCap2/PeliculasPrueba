@@ -29,7 +29,7 @@ namespace Peliculas.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetClassification(int id)
         {
-            var classification = await _classificationResponsy.GetClassifications(id);
+            var classification = await _classificationResponsy.GetClassification(id);
             var classificationDto = _mapper.Map<ClassificationsDto>(classification);
             return Ok(classificationDto);
         }

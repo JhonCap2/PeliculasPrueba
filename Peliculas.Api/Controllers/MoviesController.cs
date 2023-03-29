@@ -11,10 +11,12 @@ namespace Peliculas.Api.Controllers
     public class MoviesController : Controller
     {
         private IMoviesRepository _movieRepository;
+        private IClassificationRepository _classificationRepository;
         private readonly IMapper _mapper;
-        public MoviesController(IMoviesRepository moviesRepository, IMapper mapper)
+        public MoviesController(IMoviesRepository moviesRepository, IClassificationRepository classificationRepository, IMapper mapper)
         {
             _movieRepository = moviesRepository;
+            _classificationRepository = classificationRepository;
             _mapper = mapper;
         }
 

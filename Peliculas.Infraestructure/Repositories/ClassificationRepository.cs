@@ -20,7 +20,7 @@ namespace Peliculas.Infraestructure.Repositories
         }
         public async Task<bool> DeleteClassification(int id)
         {
-            var currentclassification = await GetClassifications(id);
+            var currentclassification = await GetClassification(id);
             _context.Classifications.Remove(currentclassification);
             int rows = await _context.SaveChangesAsync();
             return rows > 0;
@@ -32,7 +32,7 @@ namespace Peliculas.Infraestructure.Repositories
             return classifications;
         }
 
-        public async Task<Classifications> GetClassifications(int id)
+        public async Task<Classifications> GetClassification(int id)
         {
             var clasification = await _context.Classifications.SingleOrDefaultAsync(x =>x.IdClassification == id);
             return clasification;
@@ -46,7 +46,7 @@ namespace Peliculas.Infraestructure.Repositories
 
         public async Task<bool> UpdateClassification(Classifications classifications)
         {
-            var currentclassification = await GetClassifications(classifications.IdClassification);
+            var currentclassification = await GetClassification(classifications.IdClassification);
             currentclassification.Name = classifications.Name;
             int rows = await _context.SaveChangesAsync();
             return rows > 0;

@@ -28,7 +28,7 @@ namespace Peliculas.Infraestructure.Repositories
 
         public async Task<IEnumerable<Movies>> GetMovies()
         {
-            var movies = await _context.Movies.ToListAsync();
+            var movies = await _context.Movies.Include(x => x.IdClassificationNavigation).ToListAsync();
             return movies;
         }
 

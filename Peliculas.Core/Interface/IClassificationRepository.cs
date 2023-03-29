@@ -10,7 +10,7 @@ namespace Peliculas.Core.Interface
     public interface IClassificationRepository
     {
         Task<IEnumerable<Classifications>> GetClassifications();
-        Task<Classifications> GetClassifications(int id);
+        Task<Classifications> GetClassification(int id);
         Task InsertClassification(Classifications newclassifications);
         Task <bool> UpdateClassification(Classifications classifications);
         Task <bool> DeleteClassification(int id);
