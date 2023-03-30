@@ -10,7 +10,7 @@ namespace Peliculas.Core.Interface
     public interface IMoviesRepository
     {
         Task<IEnumerable<Movies>> GetMovies();
-        Task<Movies> GetMovies(int id);
+        Task<Movies> GetMovie(int id);
         Task InsertMovie(Movies newmovies);
         Task <bool> UpdateMovie(Movies movies);
         Task <bool> DeleteMovie(int id);

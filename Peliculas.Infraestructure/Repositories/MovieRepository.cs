@@ -20,7 +20,7 @@ namespace Peliculas.Infraestructure.Repositories
         }
         public async Task<bool> DeleteMovie(int id)
         {
-            var currentmovie = await GetMovies(id);
+            var currentmovie = await GetMovie(id);
             _context.Movies.Remove(currentmovie);
             int rows = await _context.SaveChangesAsync();
             return rows > 0;
@@ -32,7 +32,7 @@ namespace Peliculas.Infraestructure.Repositories
             return movies;
         }
 
-        public async Task<Movies> GetMovies(int id)
+        public async Task<Movies> GetMovie(int id)
         {
             var movie = await _context.Movies.SingleOrDefaultAsync(x=>x.IdMovie == id);
             return movie;
@@ -46,12 +46,13 @@ namespace Peliculas.Infraestructure.Repositories
 
         public async Task<bool> UpdateMovie(Movies movies)
         {
-            var currentmovie = await GetMovies(movies.IdMovie);
+            var currentmovie = await GetMovie(movies.IdMovie);
             currentmovie.IdClassification = movies.IdClassification;
             currentmovie.Title = movies.Title;
             currentmovie.Description = movies.Description;
             currentmovie.Cover = movies.Cover;
 
+            _context.Attach(currentmovie).State = EntityState.Modified;
             int rows = await _context.SaveChangesAsync();
             return rows > 0;
         }

@@ -31,7 +31,7 @@ namespace Peliculas.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMovie(int id)
         {
-            var movies = await _movieRepository.GetMovies(id);
+            var movies = await _movieRepository.GetMovie(id);
             var movieDto = _mapper.Map<MoviesDto>(movies);
             return Ok(movieDto);
         }
