@@ -27,8 +27,7 @@ namespace Peliculas.Infraestructure.Data.Property
                 .HasMaxLength(100);
 
             builder.Property(e => e.Description)
-                .IsRequired()
-                .HasMaxLength(100);
+                .IsRequired();
 
             builder.Property(e => e.Cover)
                 .IsRequired();
