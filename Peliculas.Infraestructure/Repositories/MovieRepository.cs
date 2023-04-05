@@ -34,7 +34,7 @@ namespace Peliculas.Infraestructure.Repositories
 
         public async Task<Movies> GetMovie(int id)
         {
-            var movie = await _context.Movies.SingleOrDefaultAsync(x=>x.IdMovie == id);
+            var movie = await _context.Movies.Include(x => x.IdClassificationNavigation).SingleOrDefaultAsync(x=>x.IdMovie == id);
             return movie;
         }
 
